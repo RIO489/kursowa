@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard - Metal Manufacturing Automation System</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<header>
+  <h1>User Dashboard</h1>
+  <nav>
+    <ul>
+      <li><a th:href="@{/}">Home</a></li>
+      <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+      <!-- Only show the Order link if the user is authenticated -->
+      <li sec:authorize="isAuthenticated()"><a th:href="@{api/client/order}">Order</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section id="welcome" sec:authorize="isAuthenticated()">
+    <h2>Welcome, <span sec:authentication="name">User</span>!</h2>
+    <p>You are now signed in to the Metal Manufacturing Automation System.</p>
+  </section>
+
+  <section id="exclusive-content" sec:authorize="isAuthenticated()">
+    <h2>Exclusive User Content</h2>
+    <p>This section is only visible to authenticated users.</p>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2023 Metal Manufacturing Automation System. All rights reserved.</p>
+</footer>
+</body>
+</html>

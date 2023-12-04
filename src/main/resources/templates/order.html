@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manufacturing Order Form</title>
+    <!-- Add your CSS file link here -->
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<h1>Manufacturing Order Form</h1>
+<h2>Надішліть заявку,  із зазначенням найменування робіт / проекту з автоматизації у полі Special Instructions:</h2>
+
+    <h3>Безпосередньо на сторінці готових рішень, кнопки:  “Готове рішення” или “Замовити проект” (індивідуальний проект)</h3>
+        <h3>  Через онлайн форму на сайті, кнопка “Консультація”</h3>
+            <h3>Інженер-консультант, який отримав заявку, протягом 48 годин зв’яжеться з вами, уточнить деталі, після чого підготує пропозицію. Для цього потрібно, щоб у вашій заявці було вказано всю контактну інформацію. Після погодження ціни послуги, термінів виконання робіт та умов договору інженер-консультант підготує договір та виставить рахунок для оплати.</h3>
+<form th:action="@{/client/order}" method="post"  id="orderForm">
+    <div class="form-group">
+            <!-- Add more metal types as needed -->
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required placeholder="Enter your email">
+    </div>
+
+    <div class="form-group">
+        <label for="address">Address:</label>
+        <input id="address" required placeholder="Enter your phone number">
+    </div>
+
+    <div class="form-group">
+        <label for="info">Special Instructions:</label>
+        <textarea id="info" placeholder="Any special instructions or requests"></textarea>
+    </div>
+
+    <button type="submit">Submit Order</button>
+</form>
+<script th:inline="javascript">
+document.addEventListener('DOMContentLoaded', function(event) {
+  var form = document.getElementById('orderForm');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var orderData = {
+      customerEmail: document.getElementById('email').value,
+      address: document.getElementById('address').value, // Corrected field
+      info: document.getElementById('info').value,
+      orderStatus: 'PENDING'
+    };
+
+    fetch('/client/order', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjIxMUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjEyMzEyMyJ9.5ByJSgsGLfDWCvgxAn2s2JEW-SLroxD-mENmwElOrxg' // Include the JWT you are sending
+
+      },
+      body: JSON.stringify(orderData)
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok: ' + response.statusText);
+      }
+      return response.text();
+    })
+    .then(textResponse => {
+      alert('Order is registered');
+      form.reset();
+    })
+    .catch(error => {
+      console.error('Error during order submission:', error);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

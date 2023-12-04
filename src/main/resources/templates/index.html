@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metal Manufacturing Automation System</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<header>
+    <h1>Metal Manufacturing Automation System</h1>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/services}">Services</a></li>
+            <li><a th:href="@{/contact}">Contact</a></li>
+            <li sec:authorize="!isAuthenticated()"><a th:href="@{/signup}">Sign up</a></li>
+            <li sec:authorize="!isAuthenticated()"><a th:href="@{/signin}">Sign in</a></li>
+            <li sec:authorize="isAuthenticated()"><a th:href="@{/order}">Order</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section id="introduction">
+        <h2>Welcome to the Future of Metal Manufacturing</h2>
+        <p>Our state-of-the-art system streamlines the production process, ensuring efficiency, precision, and quality.</p>
+    </section>
+
+    <section id="features">
+        <h2>Features</h2>
+        <ul>
+            <li>Automated Workflow Management</li>
+            <li>Real-time Inventory Tracking</li>
+            <li>Quality Control Modules</li>
+            <li>Comprehensive Reporting Tools</li>
+            <li>Integrated Supply Chain Solutions</li>
+        </ul>
+    </section>
+
+    <section id="contact-us">
+        <h2>Contact Us</h2>
+        <p>Have questions or need a custom solution? <a href="/contact">Get in touch with our team.</a></p>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2023 Metal Manufacturing Automation System. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+<!-- Add link to Bootstrap JS or your preferred JS framework if needed -->
+</body>
+</html>
