@@ -58,7 +58,7 @@ public class OrderServiceImpl implements OrderService {
             oldOrder.setOrderStatus(dto.getOrderStatus());
         }
         oldOrder.setOrderStatus(dto.getOrderStatus());
-        Client client = clientRepository.findByEmail(dto.getCustomerEmail()).orElseThrow(() -> new ServiceException("Can`t find User by this ID: " + dto.getCustomerEmail()));
+        Client client = clientRepository.findByEmail(dto.getEmail()).orElseThrow(() -> new ServiceException("Can`t find User by this ID: " + dto.getEmail()));
         oldOrder.setCustomer(client);
 
         orderRepository.save(oldOrder);

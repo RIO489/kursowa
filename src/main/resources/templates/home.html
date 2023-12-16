@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Система автоматизації металообробки</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<header>
+  <h1>Система автоматизації металообробки</h1>
+  <nav>
+    <ul>
+      <li><a th:href="@{/}">Головна</a></li>
+      <li><a th:href="@{/services}">Послуги</a></li>
+      <li><a th:href="@{/contact}">Контакти</a></li>
+      <li sec:authorize="!isAuthenticated()"><a th:href="@{/}">Вийти</a></li>
+      <li sec:authorize="isAuthenticated()"><a th:href="@{/client/order}">Замовлення</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section id="introduction">
+    <h2>Ласкаво просимо в майбутнє металообробки</h2>
+    <p>Наша передова система оптимізує процес виробництва, забезпечуючи ефективність, точність та якість.</p>
+  </section>
+
+  <section id="features">
+    <h2>Особливості</h2>
+    <ul>
+      <li>Автоматизоване управління робочими процесами</li>
+      <li>Відстеження запасів в реальному часі</li>
+      <li>Модулі контролю якості</li>
+      <li>Засоби повного звітування</li>
+      <li>Інтегровані рішення для ланцюга поставок</li>
+    </ul>
+  </section>
+
+  <section id="contact-us">
+    <h2>Зв'язатися з нами</h2>
+    <p>Маєте питання або потрібне індивідуальне рішення? <a href="/contact">Зверніться до нашої команди.</a></p>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2023 Система автоматизації металообробки. Всі права захищені.</p>
+</footer>
+
+<script src="script.js"></script>
+<!-- Додайте посилання на Bootstrap JS чи ваш улюблений JS фреймворк за необхідності -->
+</body>
+</html>

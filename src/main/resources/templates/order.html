@@ -45,18 +45,21 @@ document.addEventListener('DOMContentLoaded', function(event) {
     event.preventDefault();
 
     var orderData = {
-      customerEmail: document.getElementById('email').value,
-      address: document.getElementById('address').value, // Corrected field
+      email: document.getElementById('email').value,
+      address: document.getElementById('address').value,
       info: document.getElementById('info').value,
       orderStatus: 'PENDING'
     };
+
+
+    var jwtToken = localStorage.getItem('jwt');
 
     fetch('/client/order', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjIxMUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjEyMzEyMyJ9.5ByJSgsGLfDWCvgxAn2s2JEW-SLroxD-mENmwElOrxg' // Include the JWT you are sending
 
+        'Authorization': jwtToken
       },
       body: JSON.stringify(orderData)
     })

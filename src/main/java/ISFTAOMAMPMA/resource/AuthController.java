@@ -6,6 +6,7 @@ import ISFTAOMAMPMA.dto.LoginRequest;
 import ISFTAOMAMPMA.dto.MessageResponse;
 import ISFTAOMAMPMA.dto.SignupRequest;
 import ISFTAOMAMPMA.entity.Client;
+import ISFTAOMAMPMA.enums.UserRole;
 import ISFTAOMAMPMA.repository.ClientRepository;
 import ISFTAOMAMPMA.security.JwtUtils;
 import ISFTAOMAMPMA.service.impl.ClientDetailsImpl;
@@ -70,10 +71,9 @@ public class AuthController {
 
         // Create new client's account
         Client client = new Client(null, signUpRequest.getEmail(),
-                encoder.encode(signUpRequest.getPassword()), "", "",null
+                encoder.encode(signUpRequest.getPassword()), signUpRequest.getFirstname(), signUpRequest.getLastname(), UserRole.CLIENT
                 ,true,"","");
 
-        client.setUserRole(signUpRequest.getRole());
         clientRepository.save(client);
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));

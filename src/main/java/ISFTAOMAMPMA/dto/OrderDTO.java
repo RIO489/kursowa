@@ -3,12 +3,9 @@ package ISFTAOMAMPMA.dto;
 
 import ISFTAOMAMPMA.enums.OrderStatus;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
@@ -16,7 +13,7 @@ import java.math.BigDecimal;
 public class OrderDTO {
     private Long id;
     @NotNull
-    private String customerEmail;
+    private String email;
     @NotNull
     private OrderStatus orderStatus;
     @NotNull

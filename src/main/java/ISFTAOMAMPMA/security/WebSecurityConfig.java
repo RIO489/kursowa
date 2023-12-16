@@ -104,7 +104,7 @@ public class WebSecurityConfig {
     private void configureCors(CorsConfiguration corsConfiguration) {
         // Customize your CORS settings here
         corsConfiguration.addAllowedOrigin("*");
-        corsConfiguration.addAllowedMethod("POST");
+        corsConfiguration.addAllowedMethod("*");
         corsConfiguration.addAllowedHeader("*");
         corsConfiguration.setAllowCredentials(true);
     }

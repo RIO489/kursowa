@@ -9,8 +9,9 @@ import ISFTAOMAMPMA.enums.UserRole;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SignupRequest {
+    private String firstname;
+    private String lastname;
     private String username;
     private String email;
     private String password;
-    private UserRole role;
 }

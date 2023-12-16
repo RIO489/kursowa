@@ -1,54 +1,53 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metal Manufacturing Automation System</title>
-    <link rel="stylesheet" th:href="@{/styles.css}">
+    <title>Система автоматизації металообробки</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
 </head>
 <body>
 <header>
-    <h1>Metal Manufacturing Automation System</h1>
+    <h1>Система автоматизації металообробки</h1>
     <nav>
         <ul>
-            <li><a th:href="@{/}">Home</a></li>
-            <li><a th:href="@{/services}">Services</a></li>
-            <li><a th:href="@{/contact}">Contact</a></li>
-            <li sec:authorize="!isAuthenticated()"><a th:href="@{/signup}">Sign up</a></li>
-            <li sec:authorize="!isAuthenticated()"><a th:href="@{/signin}">Sign in</a></li>
-            <li sec:authorize="isAuthenticated()"><a th:href="@{/order}">Order</a></li>
+            <li><a th:href="@{/}">Головна</a></li>
+            <li><a th:href="@{/services}">Послуги</a></li>
+            <li><a th:href="@{/contact}">Контакти</a></li>
+            <li sec:authorize="!isAuthenticated()"><a th:href="@{/signup}">Зареєструватися</a></li>
+            <li sec:authorize="!isAuthenticated()"><a th:href="@{/signin}">Увійти</a></li>
         </ul>
     </nav>
 </header>
 
 <main>
     <section id="introduction">
-        <h2>Welcome to the Future of Metal Manufacturing</h2>
-        <p>Our state-of-the-art system streamlines the production process, ensuring efficiency, precision, and quality.</p>
+        <h2>Ласкаво просимо в майбутнє металообробки</h2>
+        <p>Наша передова система оптимізує процес виробництва, забезпечуючи ефективність, точність та якість.</p>
     </section>
 
     <section id="features">
-        <h2>Features</h2>
+        <h2>Особливості</h2>
         <ul>
-            <li>Automated Workflow Management</li>
-            <li>Real-time Inventory Tracking</li>
-            <li>Quality Control Modules</li>
-            <li>Comprehensive Reporting Tools</li>
-            <li>Integrated Supply Chain Solutions</li>
+            <li>Автоматизоване управління робочими процесами</li>
+            <li>Відстеження запасів в реальному часі</li>
+            <li>Модулі контролю якості</li>
+            <li>Засоби повного звітування</li>
+            <li>Інтегровані рішення для ланцюга поставок</li>
         </ul>
     </section>
 
     <section id="contact-us">
-        <h2>Contact Us</h2>
-        <p>Have questions or need a custom solution? <a href="/contact">Get in touch with our team.</a></p>
+        <h2>Зв'язатися з нами</h2>
+        <p>Маєте питання або потрібне індивідуальне рішення? <a href="/contact">Зверніться до нашої команди.</a></p>
     </section>
 </main>
 
 <footer>
-    <p>&copy; 2023 Metal Manufacturing Automation System. All rights reserved.</p>
+    <p>&copy; 2023 Система автоматизації металообробки. Всі права захищені.</p>
 </footer>
 
 <script src="script.js"></script>
-<!-- Add link to Bootstrap JS or your preferred JS framework if needed -->
+<!-- Додайте посилання на Bootstrap JS чи ваш улюблений JS фреймворк за необхідності -->
 </body>
 </html>

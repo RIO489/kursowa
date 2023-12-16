@@ -16,7 +16,7 @@ public class MapperOrder {
         final OrderDTO dto = new OrderDTO();
         dto.setId(order.getId());
         dto.setAddress(order.getAddress());
-        dto.setCustomerEmail(order.getCustomer().getEmail());
+        dto.setEmail(order.getCustomer().getEmail());
         dto.setOrderStatus(order.getOrderStatus());
         dto.setInfo(order.getInfo());
         return dto;
@@ -27,7 +27,7 @@ public class MapperOrder {
         final Order order = new Order();
         order.setId(dto.getId());
         order.setAddress(dto.getAddress());
-        order.setCustomer(clientRepository.findByEmail(dto.getCustomerEmail()).orElseThrow(() -> new ServiceException("Can`t find User by this Email: " + dto.getCustomerEmail())));
+        order.setCustomer(clientRepository.findByEmail(dto.getEmail()).orElseThrow(() -> new ServiceException("Can`t find User by this Email: " + dto.getEmail())));
         order.setOrderStatus(dto.getOrderStatus());
         order.setInfo(dto.getInfo());
         return order;
